@@ -5,7 +5,7 @@ package cn.com.push.config;
  * Created by maxd on 2017/3/28.
  */
 public class GeTuiConfig {
-    //
+
     public static String appId;
     public static String appKey;
     public static String masterSecret;

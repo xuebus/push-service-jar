@@ -25,6 +25,7 @@ import java.util.Map;
 @Service
 public class GeTuiServiceImpl implements GeTuiService {
 
+    //
     private String  appId        = GeTuiConfig.appId;
     private String  appKey       = GeTuiConfig.appKey;
     private String  masterSecret = GeTuiConfig.masterSecret;
@@ -35,7 +36,7 @@ public class GeTuiServiceImpl implements GeTuiService {
         IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         IAliasResult aliasUnBind = push.bindAlias(appId, alias, cid);
         if(aliasUnBind.getResult()){
-            System.out.println("=========================>>绑定成功........");
+            System.out.println("=========================>>个推绑定成功........");
             return true;
         }else{
             throw new PushApiException("个推绑定失败,失败原因：" + aliasUnBind.getErrorMsg());
@@ -46,7 +47,7 @@ public class GeTuiServiceImpl implements GeTuiService {
         IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         IAliasResult aliasUnBind = push.unBindAlias(appId, alias, cid);
         if(aliasUnBind.getResult()){
-            System.out.println("=========================>>解绑成功........");
+            System.out.println("=========================>>个推解绑成功........");
             return true;
         }else{
             throw new PushApiException("个推解绑失败,失败原因：" + aliasUnBind.getErrorMsg());
@@ -54,9 +55,10 @@ public class GeTuiServiceImpl implements GeTuiService {
     }
 
     @Override
-    public boolean AndroidAndIosPushtoSingle(String alias, Map map) {
+    public boolean AndroidAndIosPushtoSingle(String alias, Map map) throws PushApiException{
         IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
-        TransmissionTemplate template = TransmissionTemplateDemo.transmissionTemplateDemo(appId,appKey,map);
+        //创建透传模板
+        TransmissionTemplate template = TransmissionTemplateDemo.transmissionTemplate(appId,appKey,map);
         SingleMessage message = new SingleMessage();
         message.setOffline(true);
         // 离线有效时间，单位为毫秒，可选
@@ -75,11 +77,42 @@ public class GeTuiServiceImpl implements GeTuiService {
             ret = push.pushMessageToSingle(message, target, e.getRequestId());
         }
         if (ret != null) {
-            System.out.println(ret.getResponse().toString());
+            System.out.println("=========================>>个推按照别名透传推送成功..................");
             return true;
         } else {
-            System.out.println("=========================>>安卓、IOS透传推送服务，服务器响应异常.........");
-            return false;
+            throw new PushApiException("个推传推送服务，服务器响应异常！");
+        }
+    }
+
+    @Override
+    public boolean AndroidAndIosPushtoSingle(String alias, String title, String message) throws PushApiException {
+        IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
+        //创建透传模板
+        TransmissionTemplate template = TransmissionTemplateDemo.transmissionTemplate(title,message);
+        template.setAppId(appId);
+        template.setAppkey(appKey);
+        SingleMessage singleMessage = new SingleMessage();
+        singleMessage.setOffline(true);
+        // 离线有效时间，单位为毫秒，可选
+        singleMessage.setOfflineExpireTime(24 * 3600 * 1000);
+        singleMessage.setData(template);
+        // 可选，1为wifi，0为不限制网络环境。根据手机处于的网络情况，决定是否下发
+        singleMessage.setPushNetWorkType(0);
+        Target target = new Target();
+        target.setAppId(appId);
+        target.setAlias(alias);
+        IPushResult ret;
+        try {
+            ret = push.pushMessageToSingle(singleMessage, target);
+        } catch (RequestException e) {
+            e.printStackTrace();
+            ret = push.pushMessageToSingle(singleMessage, target, e.getRequestId());
+        }
+        if (ret != null) {
+            System.out.println("=========================>>个推按照别名透传推送成功..................");
+            return true;
+        } else {
+            throw new PushApiException("个推传推送服务，服务器响应异常！");
         }
     }
 }

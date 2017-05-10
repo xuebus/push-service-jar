@@ -28,10 +28,22 @@ public interface GeTuiService {
 
 
     /**
-     * 安卓、IOS透传推送服务接口
+     * 安卓、IOS透传推送服务接口，按照别名推送
      * @param alias
      * @param map
      * @return
      */
-    public boolean AndroidAndIosPushtoSingle(String alias, Map map);
+    public boolean AndroidAndIosPushtoSingle(String alias, Map map) throws PushApiException;
+
+
+    /**
+     * 安卓、IOS透传推送服务接口，按照别名推送,只推送标题和内容
+     * @param alias
+     * @param title
+     * @param message
+     * @return
+     * @throws PushApiException
+     */
+    public boolean AndroidAndIosPushtoSingle(String alias, String title,String message) throws PushApiException;
+
 }
