@@ -1,5 +1,7 @@
 package cn.com.push.getui.template;
 
+import cn.com.push.config.GeTuiConfig;
+import cn.com.push.getui.Service.impl.GeTuiServiceImpl;
 import com.gexin.fastjson.JSONObject;
 import com.gexin.rp.sdk.base.payload.APNPayload;
 import com.gexin.rp.sdk.template.TransmissionTemplate;
@@ -55,4 +57,12 @@ public class TransmissionTemplateDemo {
 		alertMsg.addTitleLocArg("TitleLocArg");
 		return alertMsg;
 	}
+
+	public static void main(String[] args) {
+
+		GeTuiConfig hhh = new GeTuiConfig("11111","222222","333333","2222222");
+		GeTuiServiceImpl iii = new GeTuiServiceImpl();
+		iii.AliasBinDingFunction("123","45612332222");
+	}
+
 }

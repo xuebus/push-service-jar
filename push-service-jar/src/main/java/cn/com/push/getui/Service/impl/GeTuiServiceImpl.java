@@ -27,7 +27,7 @@ public class GeTuiServiceImpl implements GeTuiService {
     private String  appId = GeTuiConfig.appId;
     private String  appKey = GeTuiConfig.appKey;
     private String  masterSecret = GeTuiConfig.masterSecret;
-    private String  host = GeTuiConfig.host;
+    private String  host = GeTuiConfig.hostUrl;
 
 
     @Override

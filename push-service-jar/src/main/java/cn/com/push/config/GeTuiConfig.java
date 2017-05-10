@@ -1,11 +1,38 @@
 package cn.com.push.config;
 
 /**
+ * 个推的配置实体类
  * Created by maxd on 2017/3/28.
  */
 public class GeTuiConfig {
-    public static String appId = "Pb6NgP1ZqH8U3nOQsYpqq5";
-    public static String appKey = "NFKrz1sHdd73a22I95In46";
-    public static String masterSecret = "gvo0GjkXCz68X9AkX8zjl1";
-    public static String host = "http://sdk.open.api.igexin.com/apiex.htm";
+    //
+    public static String appId;
+    public static String appKey;
+    public static String masterSecret;
+    //请求个推的地址
+    public static String hostUrl;
+
+    //构造函数，创建默认值
+    public GeTuiConfig(String appId,String appKey,String masterSecret,String hostUrl){
+        this.appId  = appId;
+        this.appKey = appKey;
+        this.masterSecret = masterSecret;
+        this.hostUrl = hostUrl;
+    }
+
+    public static String getAppId() {
+        return appId;
+    }
+
+    public static String getAppKey() {
+        return appKey;
+    }
+
+    public static String getMasterSecret() {
+        return masterSecret;
+    }
+
+    public static String getHostUrl() {
+        return hostUrl;
+    }
 }
