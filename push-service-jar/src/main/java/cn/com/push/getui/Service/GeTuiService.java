@@ -11,7 +11,7 @@ import java.util.Map;
 public interface GeTuiService {
 
     /**
-     * 安卓个推用户的别名与CID绑定
+     * 个推用户的别名与CID绑定
      * @param alias
      * @param cid
      * @return
@@ -19,7 +19,7 @@ public interface GeTuiService {
     public boolean AliasBinDingFunction(String alias, String cid) throws PushApiException;
 
     /**
-     * 对用户进行解绑
+     * 个推用户的别名与CID解绑
      * @param alias
      * @param cid
      * @return
