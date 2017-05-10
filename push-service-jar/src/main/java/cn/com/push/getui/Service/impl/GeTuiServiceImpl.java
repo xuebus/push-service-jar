@@ -27,12 +27,11 @@ public class GeTuiServiceImpl implements GeTuiService {
     private String  appId = GeTuiConfig.appId;
     private String  appKey = GeTuiConfig.appKey;
     private String  masterSecret = GeTuiConfig.masterSecret;
-    private String  host = GeTuiConfig.hostUrl;
-
+    private String  hostUrl = GeTuiConfig.hostUrl;
 
     @Override
     public boolean AliasBinDingFunction(String alias, String cid) {
-        IGtPush push = new IGtPush(host, appKey, masterSecret);
+        IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         IAliasResult bindSCid = push.bindAlias(appId, alias, cid);
         if(bindSCid.getResult()){
             System.out.println("=========================>>绑定成功........");
@@ -45,7 +44,7 @@ public class GeTuiServiceImpl implements GeTuiService {
     }
     @Override
     public boolean UnBindDingFunction(String alias, String cid) {
-        IGtPush push = new IGtPush(host, appKey, masterSecret);
+        IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         IAliasResult aliasUnBind = push.unBindAlias(appId, alias, cid);
         if(aliasUnBind.getResult()){
             System.out.println("=========================>>解绑成功........");
@@ -59,7 +58,7 @@ public class GeTuiServiceImpl implements GeTuiService {
 
     @Override
     public boolean AndroidAndIosPushtoSingle(String alias, Map map) {
-        IGtPush push = new IGtPush(host, appKey, masterSecret);
+        IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         TransmissionTemplate template = TransmissionTemplateDemo.transmissionTemplateDemo(appId,appKey,map);
         SingleMessage message = new SingleMessage();
         message.setOffline(true);
