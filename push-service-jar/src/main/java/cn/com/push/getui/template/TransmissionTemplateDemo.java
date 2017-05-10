@@ -6,6 +6,10 @@ import com.gexin.rp.sdk.template.TransmissionTemplate;
 
 import java.util.Map;
 
+
+/**
+ * 透传模板实体类
+ */
 public class TransmissionTemplateDemo {
 
 	/**
