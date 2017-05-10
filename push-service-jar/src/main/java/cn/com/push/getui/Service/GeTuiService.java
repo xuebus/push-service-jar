@@ -1,5 +1,7 @@
 package cn.com.push.getui.Service;
 
+import cn.com.push.exception.PushApiException;
+
 import java.util.Map;
 
 /**
@@ -14,7 +16,7 @@ public interface GeTuiService {
      * @param cid
      * @return
      */
-    public boolean AliasBinDingFunction(String alias, String cid);
+    public boolean AliasBinDingFunction(String alias, String cid) throws PushApiException;
 
     /**
      * 对用户进行解绑
@@ -22,7 +24,7 @@ public interface GeTuiService {
      * @param cid
      * @return
      */
-    public boolean UnBindDingFunction(String alias, String cid);
+    public boolean UnBindDingFunction(String alias, String cid) throws PushApiException;
 
 
     /**

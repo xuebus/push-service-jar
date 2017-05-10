@@ -4,6 +4,7 @@ package cn.com.push.getui.Service.impl;
 
 
 import cn.com.push.config.GeTuiConfig;
+import cn.com.push.exception.PushApiException;
 import cn.com.push.getui.Service.GeTuiService;
 import cn.com.push.getui.template.TransmissionTemplateDemo;
 import com.gexin.rp.sdk.base.IAliasResult;
@@ -30,29 +31,25 @@ public class GeTuiServiceImpl implements GeTuiService {
     private String  hostUrl      = GeTuiConfig.hostUrl;
 
     @Override
-    public boolean AliasBinDingFunction(String alias, String cid) {
+    public boolean AliasBinDingFunction(String alias, String cid) throws PushApiException{
         IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
-        IAliasResult bindSCid = push.bindAlias(appId, alias, cid);
-        if(bindSCid.getResult()){
+        IAliasResult aliasUnBind = push.bindAlias(appId, alias, cid);
+        if(aliasUnBind.getResult()){
             System.out.println("=========================>>绑定成功........");
             return true;
         }else{
-            System.out.println("=========================>>绑定失败.........");
-            System.out.println("=========================>>失败原因:"+bindSCid.getErrorMsg());
-            return false;
+            throw new PushApiException("个推绑定失败,失败原因：" + aliasUnBind.getErrorMsg());
         }
     }
     @Override
-    public boolean UnBindDingFunction(String alias, String cid) {
+    public boolean UnBindDingFunction(String alias, String cid) throws PushApiException{
         IGtPush push = new IGtPush(hostUrl, appKey, masterSecret);
         IAliasResult aliasUnBind = push.unBindAlias(appId, alias, cid);
         if(aliasUnBind.getResult()){
             System.out.println("=========================>>解绑成功........");
             return true;
         }else{
-            System.out.println("=========================>>解绑失败.........");
-            System.out.println("=========================>>失败原因:"+aliasUnBind.getErrorMsg());
-            return false;
+            throw new PushApiException("个推解绑失败,失败原因：" + aliasUnBind.getErrorMsg());
         }
     }
 
