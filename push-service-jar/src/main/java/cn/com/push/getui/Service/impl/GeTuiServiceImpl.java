@@ -24,10 +24,10 @@ import java.util.Map;
 @Service
 public class GeTuiServiceImpl implements GeTuiService {
 
-    private String  appId = GeTuiConfig.appId;
-    private String  appKey = GeTuiConfig.appKey;
+    private String  appId        = GeTuiConfig.appId;
+    private String  appKey       = GeTuiConfig.appKey;
     private String  masterSecret = GeTuiConfig.masterSecret;
-    private String  hostUrl = GeTuiConfig.hostUrl;
+    private String  hostUrl      = GeTuiConfig.hostUrl;
 
     @Override
     public boolean AliasBinDingFunction(String alias, String cid) {

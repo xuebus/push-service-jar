@@ -5,8 +5,8 @@ package cn.com.push.exception;
  * Created by maxd on 2017/5/10.
  */
 public class PushApiException extends Exception{
-    private String            errCode;
-    private String            errMsg;
+    private String errCode;
+    private String errMsg;
 
     public PushApiException() {
         super();
