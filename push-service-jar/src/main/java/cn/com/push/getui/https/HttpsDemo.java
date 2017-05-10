@@ -17,7 +17,7 @@ public class HttpsDemo {
         // https连接
         IGtPush push = new IGtPush(appKey, masterSecret, true);
         // 此处true为https域名，false为http，默认为false。Java语言推荐使用此方式
-        // IGtPush push = new IGtPush(host, appkey, master);
+        // IGtPush youmeng = new IGtPush(host, appkey, master);
         // host为域名，根据域名区分是http协议/https协议
         LinkTemplate template = linkTemplateDemo();
         SingleMessage message = new SingleMessage();

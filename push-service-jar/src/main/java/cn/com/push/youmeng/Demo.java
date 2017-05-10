@@ -1,8 +1,8 @@
-package cn.com.push.push;
+package cn.com.push.youmeng;
 
 
-import cn.com.push.push.android.*;
-import cn.com.push.push.ios.*;
+import cn.com.push.youmeng.android.*;
+import cn.com.push.youmeng.ios.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

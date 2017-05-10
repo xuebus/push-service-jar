@@ -1,7 +1,7 @@
-package cn.com.push.push.android;
+package cn.com.push.youmeng.android;
 
 
-import cn.com.push.push.AndroidNotification;
+import cn.com.push.youmeng.AndroidNotification;
 
 public class AndroidFilecast extends AndroidNotification {
 	public AndroidFilecast(String appkey,String appMasterSecret) throws Exception {

@@ -1,4 +1,4 @@
-package cn.com.push.push;
+package cn.com.push.youmeng;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;

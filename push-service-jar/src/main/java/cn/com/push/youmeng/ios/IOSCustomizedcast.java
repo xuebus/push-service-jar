@@ -1,7 +1,7 @@
-package cn.com.push.push.ios;
+package cn.com.push.youmeng.ios;
 
 
-import cn.com.push.push.IOSNotification;
+import cn.com.push.youmeng.IOSNotification;
 
 public class IOSCustomizedcast extends IOSNotification {
 	public IOSCustomizedcast(String appkey,String appMasterSecret) throws Exception {

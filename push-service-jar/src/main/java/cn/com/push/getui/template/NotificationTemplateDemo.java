@@ -43,7 +43,7 @@ public class NotificationTemplateDemo {
 		template1.setAppId(appId);
 		template1.setAppkey(appkey);
 		Style1 style = new Style1();
-		style.setLogo("push.png");
+		style.setLogo("youmeng.png");
 		//通知标题
 		style.setTitle(map.get("title").toString());
 		//通知内容

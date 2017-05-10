@@ -57,7 +57,7 @@ public class PushtoSingle {
         template1.setAppId(appId);
         template1.setAppkey(appKey);
         Style1 style = new Style1();
-        style.setLogo("push.png");
+        style.setLogo("youmeng.png");
         style.setTitle("马晓东!");
         style.setText("这是一条推送消息~");
         // 设置通知是否响铃，震动，或者可清除
